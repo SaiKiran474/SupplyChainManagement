@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Add(){
+            console.log("fun")
+            if(document.getElementById("ADST").checked){
+                document.getElementById("Div_id").innerHTML=`<input type="number" id="n2" class="form-control form-control-lg"
+            placeholder="Enter id" required></input>`
+            }
+        }
+    </script>
+    <h1>HELLO</h1>
+    
+    <form action="/update" method="post">
+        <p>Please select Role:</p>
+        <input type="radio" id="ADST" name="Role" value="ADST">
+        <label for="ADST">ADST</label><br>
+        <input type="radio" id="DDST" name="Role" value="DDST">
+        <label for="DDST">DDST</label><br>
+        <input type="radio" id="Manufacturer" name="Role" value="Manufacturer">
+        <label for="Manufacturer">Manufacturer</label>
+        <br>  
+
+        Email input
+        <div class="form-outline mb-4">
+          <input type="number" id="n1" class="form-control form-control-lg"
+            placeholder="Enter id" required name="l1"/>
+          <label class="form-label" for="form3Example3">ID</label>
+        </div>
+        <div class="form-outline mb-4">
+          <input type="number" id="n5" class="form-control form-control-lg"
+            placeholder="Enter id" required name="l2"/>
+          <label class="form-label" for="form3Example3">ID</label>
+        </div>
+        <button type="button" onclick="Add()">Add</button>
+        <div class="Div_id"></div>
+        <div class="form-outline mb-3">
+            <input type="text" id="n2" class="form-control form-control-lg"
+              placeholder="name" length="10" required name="name"/>
+            <label class="form-label" for="form3Example4">Name</label>
+        </div>
+         <div class="form-outline mb-3">
+            <input type="number" id="n3" class="form-control form-control-lg"
+              placeholder="Enter Acc" required/>
+            <label class="form-label" for="form3Example4">Account <Address></Address></label>
+        </div> -->
+        <!-- Password input -->
+        <!-- <div class="form-outline mb-3">
+          <input type="password" id="n4" class="form-control form-control-lg"
+            placeholder="Enter password" required/>
+          <label class="form-label" for="form3Example4">Password</label>
+        </div>
+
+        <button type="submit">Register</button>
+
+      </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOOK EASY</title>
+</head>
+<body>
+  <a href="/Details">SEE ALL</a>
+    <form action="/Register" method="POST">
+      <p> Name:
+        <input type="text" placeholder="name" name="name" >
+    </p>
+    <p> ID:
+        <input type="number" placeholder="child" name="Id[0]">
+        <input type="number" placeholder="parent" name=Id[1]>
+    </p>
+    <p>Password:
+      <input type="password" placeholder="password" name="password">
+    </p>
+    <button type="submit">Register</button>
+    </form>
+</body>
+</html>
