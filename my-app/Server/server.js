@@ -8,7 +8,7 @@ const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
 const BASE_URL=process.env.BASE_URL||4000
-const BASE_URL1=process.env.BASE_URL1||3000
+const BASE_URL1=3000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
