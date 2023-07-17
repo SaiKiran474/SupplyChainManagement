@@ -49,7 +49,7 @@ export default function Request(){
             if(m3!=="" && a1!=[] && a2!=[]){
                 await window.contract.methods.push_element(state.user,a1,a2,m3,"pending","pending",""+m5).send({ from: state.Account  })
                 .then(async(result)=>{
-                   await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":m5,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Request Placed","gas":result.gasUsed},{withCredentials:true});
+                   await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":m5,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Request Placed","gas":result.gasUsed},{withCredentials:true});
                 })
     // const data = await window.contract.methods.arr().call();
     document.getElementById("sub").innerHTML = `Request Placed successfully.......`;
