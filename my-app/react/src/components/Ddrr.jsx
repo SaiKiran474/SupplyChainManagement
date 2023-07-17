@@ -41,8 +41,8 @@ export default function DDRR() {
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         const data = await window.contract.methods.getMyStructs().call();
         window.contract2 = await new window.web3.eth.Contract(ABI2, Address2);
-        const z =await axios.get(`http://localhost:4000/Details?param1=ADST`);
-        const z1 =await axios.get(`http://localhost:4000/Details?param1=DDST`);
+        const z =await axios.get(`https://blockchainscm.onrender.com/Details?param1=ADST`);
+        const z1 =await axios.get(`https://blockchainscm.onrender.com/Details?param1=DDST`);
         const y=z.data;
         const y1=z1.data;
         const d1 = await window.contract2.methods.getMyStructs().call();
@@ -147,7 +147,7 @@ export default function DDRR() {
 
         await window.contract.methods.Approve(i, x).send({ from: state.Account  })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
+            await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }
@@ -162,13 +162,13 @@ export default function DDRR() {
         if (k === x) {
             await window.contract.methods.update(i, "ASC").send({ from: state.Account  })
             .then(async(result)=>{
-                await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to ASC","gas":result.gasUsed},{withCredentials:true});
+                await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to ASC","gas":result.gasUsed},{withCredentials:true});
              })
         }
         else {
             await window.contract.methods.update(i, x).send({ from: state.Account  })
             .then(async(result)=>{
-                await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to units","gas":result.gasUsed},{withCredentials:true});
+                await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to units","gas":result.gasUsed},{withCredentials:true});
              })
         }
         get();
@@ -182,7 +182,7 @@ export default function DDRR() {
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         await window.contract.methods.UpdateStatus(k,"Sent") .send({ from: state.Account  })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
+            await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }
