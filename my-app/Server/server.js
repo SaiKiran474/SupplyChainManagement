@@ -54,7 +54,7 @@ const MongoSchema = new mongoose.Schema({
 mongoose.connect(dbUrl, { useNewUrlParser: true })
 .then((client) => {
   const db=mongoose.connection;
-    app.listen(BASE_URL, function () {
+    app.listen(4000, function () {
       console.log('Listening on port 4000');
     });
     app.get("/Login",async(req,res)=>{
