@@ -7,8 +7,20 @@ dotenv.config();
 const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
-const BASE_URL=process.env.BASE_URL||4000
-const BASE_URL1=process.env.BASE_URL||3000
+const dbUrl = 'mongodb+srv://saikiranchowdary:8977258936%40Sai@cluster0.0esgpza.mongodb.net/Blockchain?retryWrites=true&w=majority'
+const config={
+  service :"gmail",
+  host:"smtp.gmail.com",
+  port:578,
+  secure:false,
+  auth:{
+    user:"saikiranchowdary474@gmail.com",
+    pass:"chyygmkqymfkcogz"
+  },
+}
+const BASE_URL="https://blockchainscm.onrender.com"
+
+const BASE_URL1="https://blockchainscm.netlify.app"
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
@@ -44,7 +56,7 @@ const MongoSchema = new mongoose.Schema({
   Account:String
 });
 // var mongoose = require('mongoose');
-mongoose.connect(process.env.dbUrl, { useNewUrlParser: true })
+mongoose.connect(dbUrl, { useNewUrlParser: true })
 .then((client) => {
   const db=mongoose.connection;
     app.listen(BASE_URL, function () {
@@ -92,7 +104,7 @@ mongoose.connect(process.env.dbUrl, { useNewUrlParser: true })
               "subject":"Successfully Registered",
               "text":"hey"+result.Name+"Your Account has been Successfully Registerd \n Now u con enjoy by using our application"
             }
-            const transporter= nodemailer.createTransport(process.env.config);
+            const transporter= nodemailer.createTransport(config);
             await transporter.sendMail(data,(err,info)=>{
               if(err){
                 console.log(err);
@@ -118,7 +130,7 @@ mongoose.connect(process.env.dbUrl, { useNewUrlParser: true })
 
         "text":"hey"+"Your OTP is \n"+val
       }
-      const transporter= nodemailer.createTransport(process.env.config);
+      const transporter= nodemailer.createTransport(config);
       await transporter.sendMail(data,(err,info)=>{
         console.log(err!==null)
         if(err!==null){
