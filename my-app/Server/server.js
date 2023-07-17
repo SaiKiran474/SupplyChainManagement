@@ -7,6 +7,7 @@ dotenv.config();
 const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
+const BASE_URL=process.env.BASE_URL||4000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
@@ -35,7 +36,7 @@ const MongoSchema = new mongoose.Schema({
 mongoose.connect(process.env.dbUrl, { useNewUrlParser: true })
 .then((client) => {
   const db=mongoose.connection;
-    app.listen(https://blockchainscm.onrender.com, function () {
+    app.listen(BASE_URL, function () {
       console.log('Listening on port 4000');
     });
     app.get("/Login",async(req,res)=>{
