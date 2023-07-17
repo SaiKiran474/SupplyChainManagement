@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   // Handle preflight OPTIONS request
   // if (req.method === 'OPTIONS') {
   res.setHeader('Access-Control-Allow-Origin', 'https://blockchainscm.netlify.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.sendStatus(200);
   //   return;
