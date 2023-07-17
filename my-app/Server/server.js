@@ -8,12 +8,13 @@ const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
 const BASE_URL=process.env.BASE_URL||4000
+const BASE_URL1=process.env.BASE_URL1||3000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
 // app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://blockchainscm.netlify.app');
+  res.setHeader('Access-Control-Allow-Origin',BASE_URL1);
   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
   
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
