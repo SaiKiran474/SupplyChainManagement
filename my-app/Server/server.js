@@ -12,22 +12,27 @@ const BASE_URL1=process.env.BASE_URL||3000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
-app.use((req, res, next) => {
-  const allowedOrigins = ['https://blockchainscm.netlify.app','https://scm-blockchain.netlify.app','http://localhost:3001' ,'http://localhost:3000'];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
+// app.use(cors());
+// app.use((req, res, next) => {
+//   const allowedOrigins = ['https://blockchainscm.netlify.app','https://scm-blockchain.netlify.app','http://localhost:3001' ,'http://localhost:3000'];
+//   const origin = req.headers.origin;
+//   if (allowedOrigins.includes(origin)) {
+//     res.setHeader('Access-Control-Allow-Origin', origin);
+//   }
+//   // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
   
-  res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-
+//   res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
 const MongoSchema = new mongoose.Schema({
   Name: String,
   Role: String,
