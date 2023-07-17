@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
-// const cors = require('cors');
+const cors = require('cors');
 const dotenv=require('dotenv');
 dotenv.config();
 const bcrypt=require("bcrypt")
