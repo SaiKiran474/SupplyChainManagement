@@ -7,6 +7,7 @@ import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
+import {url} from "./env"
 export default function DGRR(){
     let account,k=1;
     const [res, setRes] = useState([]);
@@ -42,8 +43,8 @@ export default function DGRR(){
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         const data = await window.contract.methods.getMyStructs().call();
         window.contract2 = await new window.web3.eth.Contract(ABI2, Address2);
-        const z =await axios.get(`http://localhost:4000/Details?param1=ADST`,{withCredentials:true});
-        // const z1 =await axios.get(`http://localhost:4000/Details?param1=DDST`,{withCredentials:true});
+        const z =await axios.get(`${url}/Details?param1=ADST`,{withCredentials:true});
+        // const z1 =await axios.get(`${url}/Details?param1=DDST`,{withCredentials:true});
         const y=z.data;
         const d1=await window.contract2.methods.getMyStructs().call();
         let l,c=1,count=0,m=0;
@@ -130,13 +131,13 @@ export default function DGRR(){
                 // await window.contract.methods.update(j,x) .send({ from: account });
                 await window.contract.methods.ASC(j,x) .send({ from: state.Account  })
                 .then(async(result)=>{
-                    await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":j,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to units","gas":result.gasUsed},{withCredentials:true});
+                    await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":j,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to units","gas":result.gasUsed},{withCredentials:true});
                  })
             }
             else{
                 await window.contract.methods.update(j,"manufacturer") .send({ from: state.Account  })
                 .then(async(result)=>{
-                    await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":j,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to manufacturer","gas":result.gasUsed},{withCredentials:true});
+                    await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":j,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to manufacturer","gas":result.gasUsed},{withCredentials:true});
                  })
             }
             const d1 = await window.contract.methods.getMyStructs().call();
@@ -152,7 +153,7 @@ export default function DGRR(){
             const data = await window.contract.methods.getMyStructs().call();
             await window.contract.methods.Approve(i,x) .send({ from: state.Account  })
             .then(async(result)=>{
-                await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
+                await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
              })
             get();
     }
@@ -165,7 +166,7 @@ export default function DGRR(){
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         await window.contract.methods.UpdateStatus(k,"Sent") .send({ from: state.Account  })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
+            await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }

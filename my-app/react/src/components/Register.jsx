@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
 import  {toast} from "react-toastify";
+import {url} from "./env"
 export default function Register(){
     // const MongoRegister=async()=>{
     // }
@@ -18,7 +19,7 @@ export default function Register(){
             if(state.DD==="DDST"){
                 setValues({...values,[e.target.Id1]:state.id})
             }
-            const {data} =await axios.post("http://localhost:4000/Register",{...values},{withCredentials:true});
+            const {data} =await axios.post(`${url}/Register`,{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;

@@ -3,6 +3,7 @@ import "../index.css";
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {url} from "./env"
 
 export default function ResetPassword(){
     let k=0;
@@ -17,7 +18,7 @@ export default function ResetPassword(){
     const SendOTP=async(e)=>{
         e.preventDefault();
         try{
-            const {data} =await axios.get(`http://localhost:4000/sendotp?params=${values.Email}`,{...values},{withCredentials:true});
+            const {data} =await axios.get(`${url}/sendotp?params=${values.Email}`,{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;
@@ -35,7 +36,7 @@ export default function ResetPassword(){
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-            const {data} =await axios.post(`http://localhost:4000/UpdatePassword?param1=${values.Email}&param2=${values.Password}`,{...values},{withCredentials:true});
+            const {data} =await axios.post(`${url}/UpdatePassword?param1=${values.Email}&param2=${values.Password}`,{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;

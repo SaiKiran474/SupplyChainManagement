@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import NavBar from "./NavBar"
 import { useLocation,Link, useNavigate, Outlet } from "react-router-dom";
 import "../index.css"
+import url from "./env"
 export default function Dashboard(){
     
     const navigate=useNavigate()

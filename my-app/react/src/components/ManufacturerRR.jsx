@@ -7,6 +7,7 @@ import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
+import {url} from "./env"
 
 export default function Manufacturer() {
     const [res, setRes] = useState([]);
@@ -34,8 +35,8 @@ export default function Manufacturer() {
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         const data = await window.contract.methods.getMyStructs().call();
         window.contract2 = await new window.web3.eth.Contract(ABI2, Address2);
-        const z =await axios.get(`http://localhost:4000/Details?param1=ADST`);
-        const z1 =await axios.get(`http://localhost:4000/Details?param1=DDST`);
+        const z =await axios.get(`${url}/Details?param1=ADST`);
+        const z1 =await axios.get(`${url}/Details?param1=DDST`);
         const y=z.data;
         const y1=z1.data;
         const d1 = await window.contract2.methods.getMyStructs().call();
@@ -87,7 +88,7 @@ export default function Manufacturer() {
 
         await window.contract.methods.Approve(i, x).send({ from: state.Account  })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
+            await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Approved","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }
@@ -100,7 +101,7 @@ export default function Manufacturer() {
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         await window.contract.methods.UpdateStatus(k,"Sent") .send({ from: state.Account  })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
+            await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }

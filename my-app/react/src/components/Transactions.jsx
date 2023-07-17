@@ -6,6 +6,7 @@ import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
 import "datatables.net"
 import NavBar from "./NavBar";
+import {url} from "./env"
 export default function Transactions() {
     const [res, setRes] = useState([]);
     const { state } = useLocation();
@@ -19,7 +20,7 @@ export default function Transactions() {
 
     async function get() {
         setRes([])
-        const z =await axios.get(`http://localhost:4000/TransactionsHistory?param1=${x}`,{withCredentials:true});
+        const z =await axios.get(`${url}/TransactionsHistory?param1=${x}`,{withCredentials:true});
         setRes(z.data)
     }
     useEffect(() => {

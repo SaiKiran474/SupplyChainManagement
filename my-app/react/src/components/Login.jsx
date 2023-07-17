@@ -2,24 +2,21 @@ import React, { useState } from "react";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-<<<<<<< HEAD
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {url} from "./env"
 export default function Log() {
   const navigate = useNavigate();
+  console.log(url)
   const [values, setvalues] = useState({ Id: "", Password: "" });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(`http://localhost:4000/Login?param1=${values.Id}&param2=${values.Password}`, {
+      const { data } = await axios.get(`${url}/Login?param1=${values.Id}&param2=${values.Password}`, {
         withCredentials: true,
       });
-      console.log(data);
       if (data) {
         if (data==="Invalid Password" || data==="Invalid User Id") {
-        //   const { email, password } = data.errors;
           if (data==="Invalid User Id") showError("Invalid User Id");
           else showError("Invalid Password" );
         } else {
@@ -36,43 +33,6 @@ export default function Log() {
       }
     } catch (err) {
       showError("An error occurred");
-=======
-import {toast} from "react-toastify";
-export default function Log(){
-const navigate=useNavigate();
-    const [values,setvalues]=useState({Id:"",Password:""}) 
-    const generateError=(err)=>toast.error(err,{
-        position:"bottom-right",
-    });
-    const handleSubmit=async(e)=>{
-        e.preventDefault();
-        try{
-            const {data} =await axios.get(`https://blockchainscm.onrender.com/Login?param1=${values.Id}&param2=${values.Password}`,{...values},{withCredentials:true});
-            if(data){
-                if(data.errors){
-                    const {email,password}=data.errors;
-                    if(email) generateError(email);
-                    else if(password) generateError(password);
-                }
-                else{
-                    // dispatch({type:"LOGIN_SUCCESS",payload:data.data});
-                    if(data.Role==="ADST"){
-                        navigate("/"+data.Name,{state:{"DD":data.Role,"user":data.Name,"id":data.Id,"Account":data.Account}}) ;
-                    }
-                    else if(data.Role==="DDST"){
-                        navigate("/"+data.Name,{state:{"DD":data.Role,"user":data.Name,"id":data.Id,"Account":data.Account}}) ;
-                    }
-                    else if(data.Role==="DGST"){
-                        navigate("/"+data.Name,{state:{"DD":data.Role,"user":data.Name,"id":data.Id,"Account":data.Account}}) ;
-                    }
-                    else{
-                        navigate("/"+data.Name,{state:{"DD":data.Role,"user":data.Name,"id":data.Id,"Account":data.Account}}) ;
-                    }
-                }
-            }
-        }catch(err){
-        };
->>>>>>> 7b49bcd6b0d9324c4b9fad12c42cb686fbc9fa54
     }
   };
 

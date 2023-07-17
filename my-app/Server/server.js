@@ -1,21 +1,28 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
-// const cors = require('cors');
+const cors = require('cors');
 const dotenv=require('dotenv');
 dotenv.config();
 const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
+const BASE_URL=process.env.BASE_URL||4000
+const BASE_URL1=process.env.BASE_URL||3000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(cors());
+app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const allowedOrigins = ['https://blockchainscm.netlify.app','https://scm-blockchain.netlify.app','http://localhost:3001' ,'http://localhost:3000'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
   
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
@@ -35,7 +42,7 @@ const MongoSchema = new mongoose.Schema({
 mongoose.connect(process.env.dbUrl, { useNewUrlParser: true })
 .then((client) => {
   const db=mongoose.connection;
-    app.listen(4000, function () {
+    app.listen(BASE_URL, function () {
       console.log('Listening on port 4000');
     });
     app.get("/Login",async(req,res)=>{
