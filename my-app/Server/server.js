@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
-const cors = require('cors');
+// const cors = require('cors');
 const dotenv=require('dotenv');
 dotenv.config();
 const bcrypt=require("bcrypt")
 const app = express();
 const dbName = 'Blockchain';
+const nodemailer=require('nodemailer')
 const dbUrl = 'mongodb+srv://saikiranchowdary:8977258936%40Sai@cluster0.0esgpza.mongodb.net/Blockchain?retryWrites=true&w=majority'
 const config={
   service :"gmail",
@@ -18,10 +19,6 @@ const config={
     pass:"chyygmkqymfkcogz"
   },
 }
-const BASE_URL="https://blockchainscm.onrender.com"
-
-const BASE_URL1="https://blockchainscm.netlify.app"
-const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
 // app.use(cors());
