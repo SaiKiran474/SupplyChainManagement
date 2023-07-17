@@ -19,7 +19,7 @@ export default function Transactions() {
 
     async function get() {
         setRes([])
-        const z =await axios.get(`http://localhost:4000/TransactionsHistory?param1=${x}`,{withCredentials:true});
+        const z =await axios.get(`https://blockchainscm.onrender.com/TransactionsHistory?param1=${x}`,{withCredentials:true});
         setRes(z.data)
     }
     useEffect(() => {
