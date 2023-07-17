@@ -23,8 +23,11 @@ app.use((req, res, next) => {
   // Rest of your CORS middleware configuration
 
   // Handle preflight OPTIONS request
-  // if (req.method === 'OPTIONS') {
-  res.setHeader('Access-Control-Allow-Origin', 'https://blockchainscm.netlify.app');
+  // // if (req.method === 'OPTIONS') {
+  // res.setHeader('Access-Control-Allow-Origin', 'https://blockchainscm.netlify.app');
+  const allowedOrigins = ['https://blockchainscm.netlify.app', 'http://localhost:3001', 'http://localhost:3000'];
+
+app.use(cors({ origin: allowedOrigins, credentials: true }));
     res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.sendStatus(200);
