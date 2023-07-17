@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 export default function Log() {
   const navigate = useNavigate();
   console.log(url)

@@ -6,7 +6,7 @@ import ABI1 from "../TrufleAbi/ABI1.json";
 import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
-
+import {url,Address,Address2} from "./env"
 export default function Request() {
   let account;
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function Request() {
     setRes([])
       let account;
       const ABI = ABI1;
-      const Address = "0xFFd25E691AF85B458ac687F35c1918C9EA1ec46C";
       const { ethereum } = window;
       window.web3 = await new Web3(ethereum);
       if (window.ethereum !== "undefined") {

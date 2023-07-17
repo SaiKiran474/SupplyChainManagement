@@ -7,15 +7,13 @@ import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import ABI2 from "../TrufleAbi/ABI3.json"
 import axios from "axios";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 export default function ADRR(){
     const [res, setRes] = useState([]);
     const [isRadio, setIsRadio] = useState(1);
     let account;
     const {state}=useLocation();
     let x=state.user;
-    const Address= "0xFFd25E691AF85B458ac687F35c1918C9EA1ec46C";
-    const Address2="0xa1264490C2dae405f5c2269dFBF618B692188e1B";
     let C=0;
     let k=1;
     useEffect(() => {
@@ -77,6 +75,8 @@ export default function ADRR(){
                             f=1;
                         }
                     }
+                    // for(let m=0;m<data[i][4])
+                    console.log(data[i][0],x , d,l , f,0 , data[i][4],d, data[i][5],"ASC",data[i][0],x , d,l,f)
                     if((data[i][0]!=x && d===l && f==0 && data[i][4]==d)|| data[i][5]=="ASC"&&data[i][0]!=x && d!=l&&f==0 ){
                         if (!res.includes(data[[i]])) {
                             setRes((prev) => [...prev, data[i]]);

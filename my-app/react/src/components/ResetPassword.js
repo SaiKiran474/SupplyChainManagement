@@ -3,8 +3,7 @@ import "../index.css";
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {url} from "./env"
-
+import {url,Address,Address2} from "./env"
 export default function ResetPassword(){
     let k=0;
     const navigate=useNavigate();

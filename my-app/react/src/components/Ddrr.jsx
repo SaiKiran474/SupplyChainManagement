@@ -8,8 +8,8 @@ import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
-import "datatables.net"
-import {url} from "./env"
+import "datatables.net";
+import {url,Address,Address2} from "./env"
 export default function DDRR() {
     const [res, setRes] = useState([]);
     let account;
@@ -17,8 +17,6 @@ export default function DDRR() {
     const [isRadio,setIsRadio]=useState(1);
     const { state } = useLocation();
     let x = state.user;
-    const Address = "0x1Cd0C3b314F6619A5F469745f0761c4c108EfF6C";
-    const Address2 = "0xa1264490C2dae405f5c2269dFBF618B692188e1B";
     const { ethereum } = window;
     let m=0;
     const tableRef = useRef();
@@ -167,6 +165,13 @@ export default function DDRR() {
              })
         }
         else {
+            let q="";
+            if(k==="ASC"){
+                q+=x;
+            }
+            else{
+                q+=x+k
+            }
             await window.contract.methods.update(i, x).send({ from: state.Account  })
             .then(async(result)=>{
                 await axios.post(`${url}/TransactionHistory`,{"userId":state.user,"ReqId":i,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Forwarded to units","gas":result.gasUsed},{withCredentials:true});

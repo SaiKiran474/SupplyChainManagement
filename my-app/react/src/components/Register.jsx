@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
 import  {toast} from "react-toastify";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 export default function Register(){
     // const MongoRegister=async()=>{
     // }

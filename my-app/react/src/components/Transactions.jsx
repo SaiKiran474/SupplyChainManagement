@@ -6,7 +6,7 @@ import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
 import "datatables.net"
 import NavBar from "./NavBar";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 export default function Transactions() {
     const [res, setRes] = useState([]);
     const { state } = useLocation();

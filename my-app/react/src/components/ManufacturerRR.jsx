@@ -7,7 +7,7 @@ import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import axios from "axios";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 
 export default function Manufacturer() {
     const [res, setRes] = useState([]);
@@ -16,8 +16,6 @@ export default function Manufacturer() {
     let dt = 0,k=1;
     const { state } = useLocation();
     let x = state.user;
-    const Address = "0xFFd25E691AF85B458ac687F35c1918C9EA1ec46C";
-    const Address2 = "0xa1264490C2dae405f5c2269dFBF618B692188e1B";
     const { ethereum } = window;
     let m=0;
     const HandleSubmit=async(e)=>{

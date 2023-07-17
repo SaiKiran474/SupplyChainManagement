@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Web3 from "web3";
 import ABI1 from "../TrufleAbi/ABI1.json"
 import Progressbar from "./ProgressBar";
+import {url,Address,Address2} from "./env"
 import {
     MDBCard,
     MDBCardBody,
@@ -22,7 +23,6 @@ export default function CheckStatus(){
         setRes([]);
         let account;
         const ABI=ABI1;
-        const Address = "0x1Cd0C3b314F6619A5F469745f0761c4c108EfF6C";
         const { ethereum } = window;
         window.web3 = await new Web3(ethereum);
         if(window.ethereum !== "undefined"){

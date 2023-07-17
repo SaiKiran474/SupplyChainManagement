@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import ABI1 from "../TrufleAbi/ABI1.json"
 import axios from "axios";
-import {url} from "./env"
+import {url,Address,Address2} from "./env"
 export default function Request(){
    
     var a1=[];
