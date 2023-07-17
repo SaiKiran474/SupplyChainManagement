@@ -127,7 +127,7 @@ export default function ADRR(){
             // window.contract = await new window.web3.eth.Contract(ABI, Address);
             await window.contract.methods.Approve(k,x) .send({ from: state.Account })
             .then(async(result)=>{
-                await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":arr[5],"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":arr[4],"gas":result.gasUsed},{withCredentials:true});
+                await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":arr[5],"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":arr[4],"gas":result.gasUsed},{withCredentials:true});
              })
             get();
     }
@@ -154,7 +154,7 @@ export default function ADRR(){
             }
             await window.contract2.methods.push_element(arr).send({ from: account })
             .then(async(result)=>{
-                await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":arr[5],"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":arr[4],"gas":result.gasUsed},{withCredentials:true});
+                await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":arr[5],"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":arr[4],"gas":result.gasUsed},{withCredentials:true});
              })
            get();
     }
@@ -167,7 +167,7 @@ export default function ADRR(){
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         await window.contract.methods.UpdateStatus(k,"Sent") .send({ from: account })
         .then(async(result)=>{
-            await axios.post("http://localhost:4000/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
+            await axios.post("https://blockchainscm.onrender.com/TransactionHistory",{"userId":state.user,"ReqId":k,"transactionhash":result.transactionHash,"from":result.from,"to":result.to,"purpose":"Sent Goods","gas":result.gasUsed},{withCredentials:true});
          })
         get();
     }
