@@ -12,7 +12,7 @@ const BASE_URL1=process.env.BASE_URL||3000
 const nodemailer=require('nodemailer')
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(cors());
+app.use(cors());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin',"https://blockchainscm.netlify.app");
   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
