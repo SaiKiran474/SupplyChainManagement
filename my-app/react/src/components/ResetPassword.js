@@ -17,7 +17,7 @@ export default function ResetPassword(){
     const SendOTP=async(e)=>{
         e.preventDefault();
         try{
-            const {data} =await axios.get(`http://localhost:4000/sendotp?params=${values.Email}`,{...values},{withCredentials:true});
+            const {data} =await axios.get(`https://blockchainscm.onrender.com/sendotp?params=${values.Email}`,{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;
@@ -35,7 +35,7 @@ export default function ResetPassword(){
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-            const {data} =await axios.post(`http://localhost:4000/UpdatePassword?param1=${values.Email}&param2=${values.Password}`,{...values},{withCredentials:true});
+            const {data} =await axios.post(`https://blockchainscm.onrender.com/UpdatePassword?param1=${values.Email}&param2=${values.Password}`,{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;
