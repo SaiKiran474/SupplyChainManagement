@@ -18,7 +18,7 @@ export default function Register(){
             if(state.DD==="DDST"){
                 setValues({...values,[e.target.Id1]:state.id})
             }
-            const {data} =await axios.post("http://localhost:4000/Register",{...values},{withCredentials:true});
+            const {data} =await axios.post("https://blockchainscm.onrender.com/Register",{...values},{withCredentials:true});
             if(data){
                 if(data.errors){
                     const {email,password}=data.errors;
