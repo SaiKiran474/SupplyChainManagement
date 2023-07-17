@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin',BASE_URL1);
+  const allowedOrigins = ['https://blockchainscm.netlify.app', 'http://localhost:3000'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.194.213:3000');
   
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
