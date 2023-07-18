@@ -136,6 +136,7 @@ mongoose.connect(dbUrl, { useNewUrlParser: true })
       })
     })
     app.post("/UpdatePassword",async(req,res)=>{
+      const salt=await bcrypt.genSalt();
       y=await bcrypt.hash(req.query.param2,salt);
       await db.collection('Register').findOneAndUpdate({Email:req.query.param1},{$set:{Password:y}})
       .then(result => {
